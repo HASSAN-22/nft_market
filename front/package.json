@@ -1,0 +1,42 @@
+{
+  "name": "front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port=3000  --https true",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@chenfengyuan/vue-countdown": "^2.1.0",
+    "@walletconnect/web3-provider": "^1.8.0",
+    "autoprefixer": "^10",
+    "core-js": "^3.8.3",
+    "ethers": "^5.7.0",
+    "jquery": "^3.6.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "postcss": "^8",
+    "register-service-worker": "^1.7.2",
+    "swiper": "^8.3.2",
+    "tailwindcss": "^3",
+    "vue": "^3.2.37",
+    "vue-debounce": "^3.0.2",
+    "vue-router": "^4.0.3",
+    "vue-sweetalert2": "^5.0.5",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vuex": "^4.0.0",
+    "web3": "^1.7.3",
+    "web3modal": "^1.9.8"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "axios": "^0.27.2",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "vue-cli-plugin-axios": "^0.0.4",
+    "vue-cli-plugin-tailwind": "^3.0.0"
+  }
+}
