@@ -14,6 +14,12 @@ use function App\Auxiliary\verifySignature;
 
 class AuthController extends Controller
 {
+	/**
+     * Register user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request){
         $request->validate([
             'address'=>['required','min:42','max:42'],
@@ -50,13 +56,26 @@ class AuthController extends Controller
             return response(['status'=>'error', 'message'=>$e],500);
         }
     }
-
+	
+	/**
+     * Logout user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request){
         $user = auth()->user();
         $user->tokens()->delete();
         return response(['status'=>'success']);
     }
-
+	
+	
+	/**
+     * Token check for each request
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function checkToken(Request $request){
         if(auth()->check()){
             $user = auth()->user();
@@ -80,7 +99,13 @@ class AuthController extends Controller
         }
         return response(['status'=>'error'], 500);
     }
-
+	
+	/**
+     * User signature validation with user wallet address
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function checkSignature(Request $request){
         $user = $request->user();
         if(!is_null($user)){
@@ -88,7 +113,13 @@ class AuthController extends Controller
         }
         return response(['status'=>'error'], 500);
     }
-
+	
+	/**
+     * Check for token expiration
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     private function tokenIsExpire($user): bool{
         $token = $user->tokens()->first();
         $tokenIsExpire = $token->created_at->addHour(3) > now();
@@ -99,7 +130,7 @@ class AuthController extends Controller
         return $tokenIsExpire;
     }
 
-    private function setProfileData($userId, string $shortAddress){
+    private function setProfileData($userId, string $shortAddress): array{
         return [
             'user_id'=>$userId,
             'username'=>$shortAddress,

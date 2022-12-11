@@ -105,6 +105,12 @@ class ProfileController extends Controller
         //
     }
 
+	/**
+     * Checking the uniqueness of the username
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function checkPersonalId(Request $request){
         $request->validate([
             'personal_id'=>['required','string','unique:profiles,id']

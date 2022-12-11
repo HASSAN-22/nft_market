@@ -22,7 +22,7 @@ class Upload{
 
 
     /**
-     * Upload file
+     * Move file to storage
      *
      * @param $file
      * @param string $directory
